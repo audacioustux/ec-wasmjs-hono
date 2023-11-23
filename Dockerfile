@@ -13,8 +13,6 @@ RUN npm run build
 
 FROM tanjim/wasmjs:latest
 
-WORKDIR /app
-
-COPY --from=builder --chmod=cnb:cnb /app/bin /app
+COPY --from=builder --chown=cnb:cnb /app/bin /app
 
 ENTRYPOINT [ "wasmjs-runtime", "/app" ]
