@@ -9,9 +9,12 @@ RUN npm install
 COPY build.js ./
 COPY src ./src
 
-RUN chmod -R 777 /app
 RUN npm run build
 
 FROM tanjim/wasmjs:latest
 
-COPY --from=builder /app/bin ./
+WORKDIR /app
+
+COPY --from=builder --chmod=cnb:cnb /app/bin /app
+
+ENTRYPOINT [ "wasmjs-runtime", "/app" ]
