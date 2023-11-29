@@ -10,5 +10,5 @@ spec:
         autoscaling.knative.dev/target: "10"
     spec:
       containers:
-        - image: tanjim/wasmjs-hono
+        - image: tanjim/ec-wasmjs-hono
           imagePullPolicy: Always
